@@ -18,8 +18,8 @@ const TodoInput = (props) => {
                     <textarea className="form-control" id="body" rows="3" name="body" value={item.body} onChange={handleChange} placeholder="Write a note"></textarea>
                 </div>
                 <div className="col-auto">
-                    <button type="submit" className="btn btn-primary mb-3">
-                        Add Item
+                    <button type="submit" className={editItem ?  ' btn btn-success ' : 'btn btn-primary'} disabled={(item.title && item.body) ? false : true}>
+                       {editItem ? 'Edit item' : 'Add Item'}
                     </button>
                 </div>
             </form>
