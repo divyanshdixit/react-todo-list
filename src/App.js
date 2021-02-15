@@ -52,7 +52,6 @@ function App() {
         <h1> Todo Input </h1>
         <TodoInput item={item} handleChange={handleChange} handleSubmit={handleSubmit} editItem={editItem}/>
         <TodoList items={items} clearList={clearList} handleDelete={handleDelete} handleEdit={handleEdit}/>
-
     </div>
   );
 }

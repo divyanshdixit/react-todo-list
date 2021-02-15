@@ -1,27 +1,25 @@
 import React from 'react'
 
-const TodoInput = () => {
+const TodoInput = (props) => {
 
-    const changeNote = (e) => {
-
-    }
+    const {item, handleChange, handleSubmit, editItem} = props;
 
     return (
         <div>
             <div className="text-center">
-            <form style={{width:'500px', margin:'auto'}} onSubmit={ (e) => e.preventDefault()}>
+            <form style={{width:'500px', margin:'auto'}} onSubmit={handleSubmit}>
 
                 <div className="mb-3">
                     <label htmlFor="title" className="form-label">Title</label>
-                    <input type="text" className="form-control title" id="title" name="title" defaultValue="" onChange={changeNote} placeholder="Enter note title"/>
+                    <input type="text" className="form-control title" id="title" name="title" value={item.title} onChange={handleChange} placeholder="Enter note title"/>
                 </div>
                 <div className="mb-3">
                     <label htmlFor="body" className="form-label">Body</label>
-                    <textarea className="form-control" id="body" rows="3" name="body" defaultValue="" onChange={changeNote} placeholder="Write a note"></textarea>
+                    <textarea className="form-control" id="body" rows="3" name="body" value={item.body} onChange={handleChange} placeholder="Write a note"></textarea>
                 </div>
                 <div className="col-auto">
-                    <button type="button" className="btn btn-primary mb-3">
-                        Add
+                    <button type="submit" className="btn btn-primary mb-3">
+                        Add Item
                     </button>
                 </div>
             </form>
