@@ -3,14 +3,14 @@ import './App.css';
 import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
 import { v4 as uuidv4 } from 'uuid';
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
+
+const TodoContext = React.createContext();
 
 function App() {
 
   // all states:
   const [items, setItems] = useState([])
-
-  // const [id, setId] = useState(uuidv4());
 
   const [item, setItem] = useState({
     title:'',
@@ -20,7 +20,6 @@ function App() {
   const [editItem, setEditItem] = useState(false);
 
   const handleChange = (e) =>{
-    console.log('handle chnage')
     const {name, value} = e.target;
     setItem( (prev) => {
       return {
@@ -66,18 +65,19 @@ function App() {
   }
 
   const handleDelete = (id) => {
-
     setItems( items.filter( (val) =>  val.id !== id) );
-
   }
 
   return (
     <div className="App">
         <h1> Todo Input </h1>
         <TodoInput item={item} handleChange={handleChange} handleSubmit={handleSubmit} editItem={editItem}/>
-        <TodoList items={items} clearList={clearList} handleDelete={handleDelete} handleEdit={handleEdit}/>
+        <TodoContext.Provider value={[handleDelete,handleEdit]}>
+          <TodoList items={items} clearList={clearList}/>
+        </TodoContext.Provider>
     </div>
   );
 }
 
 export default App;
+export { TodoContext };

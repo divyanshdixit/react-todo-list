@@ -11,13 +11,16 @@ const TodoList = (props) => {
             <div style={{display:'flex'}}>
             {
                 items.map( (item, index) => {
-                    return <TodoItem 
-                    key={item.id} 
+                    return (
+                    <TodoItem 
+                    key={item.id}
+                    id={item.id}
                     title={item.title} 
                     body={item.body}
-                    handleDelete={() => handleDelete(item.id)}
-                    handleEdit = {() => handleEdit(item.id)}
+                    // handleDelete={() => handleDelete(item.id)}
+                    // handleEdit = {() => handleEdit(item.id)}
                     />
+                    )
                 })
             }
             </div>
